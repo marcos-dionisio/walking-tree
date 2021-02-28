@@ -1,0 +1,10 @@
+# Temp filea
+node_modules/
+package-lock.json
+yarn.lock
+
+# Log files
+*.log
+
+# Tests workspace
+tests/

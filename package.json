@@ -1,0 +1,30 @@
+{
+  "name": "walking-tree",
+  "version": "1.0.0",
+  "description": "Simple package to get the files path of a directory in an array",
+  "main": "src/index.js",
+  "license": "AGPL-3.0",
+  "private": false,
+  "author": {
+  	"name": "Marcos Dionisio",
+  	"email": "marcos.m.dionisio@hotmail.com",
+  	"url": "https://github.com/marcos-dionisio"
+  },
+  "keywords": [
+    "tree",
+    "files",
+    "directory",
+    "array"
+  ],
+  "engines": {
+    "node": ">=4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcos-dionisio/walking-tree.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marcos-dionisio/walking-tree/issues"
+  },
+  "homepage": "https://github.com/marcos-dionisio/walking-tree#readme"
+}
