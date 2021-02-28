@@ -50,7 +50,7 @@ The result of the execution returns an array with the path of all files
 
 # Node version
 
-The version most compatible with our package is node 4.2 or higher!
+The version most compatible with our package is node 6.17.1 or higher!
 
 # Author
 
