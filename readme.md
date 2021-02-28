@@ -7,10 +7,12 @@
   <a href="https://www.npmjs.com/package/walking-tree">
     <img src="https://badge.fury.io/js/walking-tree.svg">
   </a>
+  <a href="https://snyk.io/test/github/marcos-dionisio/walking-tree">
+    <img src="https://snyk.io/test/github/marcos-dionisio/walking-tree/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/marcos-dionisio/walking-tree" style="max-width:100%;">
+  </a>
 </p>
 
 <h1 align="center">Walking Tree</h1>
-
 <p align="center">Simple package to get the files path of a directory in an array</p>
 
 # Usage
