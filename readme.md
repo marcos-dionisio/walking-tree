@@ -16,14 +16,14 @@
 # Usage
 
 You can use it with a simple constant:
-```
+```js
 const walkingTree = require("files-tree");
 const files = walkingTree.get("./local/");
 
 console.log(files);
 ```
 Or also use with callback function:
-```
+```js
 const walkingTree = require("files-tree");
 
 walkingTree.get("./local/", (files) => {
@@ -34,7 +34,7 @@ walkingTree.get("./local/", (files) => {
 # Result
 
 The result of the execution returns an array with the path of all files
-```
+```js
 [
   './local/notes.txt',
   './local/utilites/codes/bar.js',
