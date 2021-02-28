@@ -17,14 +17,14 @@
 
 You can use it with a simple constant:
 ```js
-const walkingTree = require("files-tree");
+const walkingTree = require("walking-tree");
 const files = walkingTree.get("./local/");
 
 console.log(files);
 ```
 Or also use with callback function:
 ```js
-const walkingTree = require("files-tree");
+const walkingTree = require("walking-tree");
 
 walkingTree.get("./local/", (files) => {
 	console.log(files);
