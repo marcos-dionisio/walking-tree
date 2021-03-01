@@ -2,13 +2,24 @@
 
 const fs = require("fs");
 
+/**
+ * Main execution function
+ * @return {Object}
+ */
 function walkingTree() {
 
+	/**
+	 * Takes all files from the directory
+	 * @@param {String} path
+	 * @@param {function} callback [optional]
+	 * @return {Array}
+	 */
 	function get(path, callback) {
 		const filesPath = new Array();
 		const files = getFiles(path);
 		let index = new Number();
 
+		// Execute for loop in function, executing setFilesInArray
 		forInCode(index, {
 			execute: setFilesInArray.bind(null, filesPath),
 			array: files
@@ -17,6 +28,11 @@ function walkingTree() {
 		return callbackMethod(callback, filesPath);
 	}
 
+	/**
+	 * Get all files in directory path
+	 * @@param {String} path
+	 * @return {Array}
+	 */
 	function getFiles(path) {
 		const files = fs.readdirSync(path);
 		const filesObj = new Array();
@@ -37,6 +53,12 @@ function walkingTree() {
 		return filesObj;
 	}
 
+	/**
+	 * Push all files in directory to array
+	 * @param {Array} array
+	 * @param {Object} file
+	 * @return {undefined}
+   	 */
 	function setFilesInArray(array, file) {
 		if (!file) return;
 		if (file.isDir) return getMoreFiles(file.way, array);
@@ -44,16 +66,30 @@ function walkingTree() {
 		return array.push(file.way);
 	}
 	
+	/**
+	 * This is an extension of the getFile Is Array function to open sub directories infinitely.
+	 * @param {String} path
+	 * @param {Array} array
+	 * @return {function}
+	 */
 	function getMoreFiles(path, array) {
 		const files = getFiles(path);
 		let index = new Number();
 
+		// Execute new for loop in function, executiong setFilesInArray
 		return forInCode(index, {
 			execute: setFilesInArray.bind(null, array),
 			array: files
 		})
 	}
 
+	/**
+	 * A for loop made on a function
+	 * that checks the quantity of an array and performs a function
+	 * @param {Number} index
+	 * @param {Object} options
+	 * @return {undrfined}
+	 */
 	function forInCode(index, options) {
 		options.execute.bind(null, options.array[index])();
 		if (index < (options.array.length - 1)) {
@@ -62,6 +98,12 @@ function walkingTree() {
 		}
 	}
 
+	/**
+	 * Get method of callback, callback or simple return
+	 * @param {function} callback
+	 * @param {Array} files
+	 * @return {callback}
+	*/
 	function callbackMethod(callback, files) {
 		return (callback ? callback.bind(null, files)() : files);
 	}
@@ -71,4 +113,5 @@ function walkingTree() {
 	}
 }
 
+// Exporting modulw
 module.exports = walkingTree();

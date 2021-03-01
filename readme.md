@@ -15,6 +15,15 @@
 <h1 align="center">Walking Tree</h1>
 <p align="center">Simple package to get the files path of a directory in an array</p>
 
+# Install
+
+```
+npm i walking-tree
+```
+```
+yarn add walking-tree
+```
+
 # Usage
 
 You can use it with a simple constant:
