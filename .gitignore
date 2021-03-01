@@ -7,4 +7,4 @@ yarn.lock
 *.log
 
 # Tests workspace
-tests/
+lib/tests/
