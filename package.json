@@ -3,7 +3,7 @@
   "version": "1.0.5",
   "description": "Simple package to get the files path of a directory in an array",
   "main": "src/index.js",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "private": false,
   "author": {
   	"name": "Marcos Dionisio",
