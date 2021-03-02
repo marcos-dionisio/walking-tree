@@ -2,26 +2,23 @@
 
 const fs = require("fs");
 
-/**
- * Main execution function
- * @return {Object}
- */
+/** Main execution function */
 function walkingTree() {
 
 	/**
 	 * Takes all files from the directory
 	 * @@param {String} path
-	 * @@param {function} callback [optional]
-	 * @return {Array}
+	 * @@param {Function} callback [optional]
 	 */
-	function get(path, callback) {
+	function get() {
+		const [path, options, callback] = setParams(arguments);
 		const filesPath = new Array();
 		const files = getFiles(path);
 		let index = new Number();
 
 		// Execute for loop in function, executing setFilesInArray
 		forInCode(index, {
-			execute: setFilesInArray.bind(null, filesPath),
+			execute: setFilesInArray.bind(null, options, filesPath),
 			array: files
 		})
 
@@ -31,7 +28,6 @@ function walkingTree() {
 	/**
 	 * Get all files in directory path
 	 * @@param {String} path
-	 * @return {Array}
 	 */
 	function getFiles(path) {
 		const files = fs.readdirSync(path);
@@ -40,12 +36,12 @@ function walkingTree() {
 		if (!files) return filesObj;
 		
 		for (const index in files) {
-			const fileWay = (path + files[index]);
-			const dirWay = (path + files[index] + "/");
-			const isDir = fs.lstatSync(fileWay).isDirectory();
+			const filePath = (path + files[index]);
+			const dirPath = (path + files[index] + "/");
+			const isDir = fs.lstatSync(filePath).isDirectory();
 
 			filesObj.push({
-				way: (isDir ? dirWay : fileWay),
+				path: (isDir ? dirPath : filePath),
 				isDir: isDir
 			})
 		}
@@ -55,32 +51,49 @@ function walkingTree() {
 
 	/**
 	 * Push all files in directory to array
-	 * @param {Array} array
+	 * @options {Object} options
+	 * @param {Array} filesPath
 	 * @param {Object} file
-	 * @return {undefined}
    	 */
-	function setFilesInArray(array, file) {
+	function setFilesInArray(options, filesPath, file) {
 		if (!file) return;
-		if (file.isDir) return getMoreFiles(file.way, array);
-
-		return array.push(file.way);
+		if (file.isDir) {
+			return getMoreFiles(options, file.path, filesPath);
+		}
+		if (validate(options, file)) {
+			return filesPath.push(file.path);
+		}
 	}
 	
 	/**
 	 * This is an extension of the getFile Is Array function to open sub directories infinitely.
+	 * @param {Object} options
 	 * @param {String} path
-	 * @param {Array} array
-	 * @return {function}
+	 * @param {Array} filesPath
 	 */
-	function getMoreFiles(path, array) {
+	function getMoreFiles(options, path, filesPath) {
 		const files = getFiles(path);
 		let index = new Number();
 
 		// Execute new for loop in function, executiong setFilesInArray
 		return forInCode(index, {
-			execute: setFilesInArray.bind(null, array),
+			execute: setFilesInArray.bind(null, options, filesPath),
 			array: files
 		})
+	}
+	
+	/**
+	 * Remove not valid options in array
+	 * @param {Object} optionsObj
+	 * @param {Array} filesPath
+	 */
+	function validate(options, file) {
+		if (!options) return true;
+		if (options.filter) {
+			return options.filter.test(file.path);
+		}
+		
+		return true;
 	}
 
 	/**
@@ -88,7 +101,6 @@ function walkingTree() {
 	 * that checks the quantity of an array and performs a function
 	 * @param {Number} index
 	 * @param {Object} options
-	 * @return {undrfined}
 	 */
 	function forInCode(index, options) {
 		options.execute.bind(null, options.array[index])();
@@ -99,11 +111,24 @@ function walkingTree() {
 	}
 
 	/**
+	 * Set parans of get function
+	 * @param {Arguments}
+	 */
+	function setParams(args) {
+		const path = args[0];
+		
+		// I used conditional ternary operator to verify
+		const options = (typeof args[1] !== "object") ? undefined : args[1];
+		const callback = (typeof args[1] == "function") ? args[1] : args[2];
+	
+		return [path, options, callback];
+	}
+
+	/**
 	 * Get method of callback, callback or simple return
-	 * @param {function} callback
+	 * @param {Function} callback [optional]
 	 * @param {Array} files
-	 * @return {callback}
-	*/
+	 */
 	function callbackMethod(callback, files) {
 		return (callback ? callback.bind(null, files)() : files);
 	}

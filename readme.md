@@ -17,16 +17,19 @@
 
 # Install
 
-```
+```bash
 npm i walking-tree
 ```
-```
+```bash
 yarn add walking-tree
 ```
 
 # Usage
 
-You can use it with a simple constant:
+The syntax for using the module is simple: `walkingTree.get(path)`\
+You can also use the options to improve its use using: `walkingTree.get(path, [options])`
+
+You can use it with a simple variable:
 ```js
 const walkingTree = require("walking-tree");
 const files = walkingTree.get("./local/");
@@ -42,9 +45,13 @@ walkingTree.get("./local/", (files) => {
 })
 ```
 
+# Options
+
+`filter` : `RegExp` - Filter the path name and file so that the array returns only the desired files according to your RegEx
+
 # Result
 
-The result of the execution returns an array with the path of all files
+The result of the execution returns an array with the path of all files, if you run with the detailed options it returns an array with objects containing the name, file path and if it is a directory:
 ```js
 [
   './local/notes.txt',
