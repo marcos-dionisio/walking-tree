@@ -129,9 +129,7 @@ function walkingTree() {
 	 * @param {Function} callback [optional]
 	 * @param {Array} files
 	 */
-	function callbackMethod(callback, files) {
-		return (callback ? callback.bind(null, files)() : files);
-	}
+	const callbackMethod = (callback, files) => (callback ? callback.bind(null, files)() : files);
 
 	return {
 		get
