@@ -66,7 +66,7 @@ function walkingTree() {
 	}
 	
 	/**
-	 * This is an extension of the getFile Is Array function to open sub directories infinitely.
+	 * This is an extension of the getFile Is Array function to open sub directories infinitely
 	 * @param {Object} options
 	 * @param {String} path
 	 * @param {Array} filesPath
@@ -136,5 +136,5 @@ function walkingTree() {
 	}
 }
 
-// Exporting modulw
+// Exporting module
 module.exports = walkingTree();
