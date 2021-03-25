@@ -47,20 +47,22 @@ walkingTree.get("./local/", (files) => {
 
 # Options
 
-`filter` : `RegExp` - Filter the path name and file so that the array returns only the desired files according to your RegEx
+`filter` : `RegExp` - Filter the path name and file so that the array returns only the desired files according to your RegEx \
+`details` : `Boolean` - See the contents of the files in detail \
+`fokder` : `Boolean` - Take folders also on the return of the module
 
 # Result
 
 The result of the execution returns an array with the path of all files, if you run with the detailed options it returns an array with objects containing the name, file path and if it is a directory:
 ```js
 [
-  './local/notes.txt',
-  './local/utilites/codes/bar.js',
-  './local/utilites/codes/baz.js',
-  './local/utilites/codes/foo.js',
-  './local/utilites/images/bird.png',
-  './local/utilites/images/cat.png',
-  './local/utilites/videos/bird-meme.mp4'
+  '.../local/notes.txt',
+  '.../local/utilites/codes/bar.js',
+  '.../local/utilites/codes/baz.js',
+  '.../local/utilites/codes/foo.js',
+  '.../local/utilites/images/bird.png',
+  '.../local/utilites/images/cat.png',
+  '.../local/utilites/videos/bird-meme.mp4'
 ]
 ```
 

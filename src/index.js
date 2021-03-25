@@ -1,14 +1,23 @@
 "use strict"
 
+const nodePath = require("path");
 const fs = require("fs");
 
 /** Main execution function */
 function walkingTree() {
 
+    /**
+	 * Get method of callback, callback or simple return
+	 * @param {Function} callback [optional]
+	 * @param {Array} files
+	 */
+	const callbackMethod = (callback, files) => (callback ? callback.bind(null, files)() : files);
+
 	/**
 	 * Takes all files from the directory
-	 * @@param {String} path
-	 * @@param {Function} callback [optional]
+	 * @param {String} path
+	 * @param {Object} [optional] options
+	 * @param {Function} [options] callback
 	 */
 	function get() {
 		const [path, options, callback] = setParams(arguments);
@@ -36,13 +45,15 @@ function walkingTree() {
 		if (!files) return filesObj;
 		
 		for (const index in files) {
-			const filePath = (path + files[index]);
-			const dirPath = (path + files[index] + "/");
+		    const fileName = files[index];
+			const filePath = nodePath.resolve(path + files[index]);
 			const isDir = fs.lstatSync(filePath).isDirectory();
+            const finalPath = (isDir ? (filePath + "/") : filePath);
 
 			filesObj.push({
-				path: (isDir ? dirPath : filePath),
-				isDir: isDir
+			    name: fileName,
+			    isDir: isDir,
+				path: finalPath
 			})
 		}
 
@@ -57,11 +68,17 @@ function walkingTree() {
    	 */
 	function setFilesInArray(options, filesPath, file) {
 		if (!file) return;
+		
+		const config = configuration(options, file);
+		
 		if (file.isDir) {
+		    if (config.folders && config.valid) {
+		        filesPath.push(config.value);
+		    }
 			return getMoreFiles(options, file.path, filesPath);
 		}
-		if (validate(options, file)) {
-			return filesPath.push(file.path);
+		if (config.valid) {
+			return filesPath.push(config.value);
 		}
 	}
 	
@@ -83,17 +100,31 @@ function walkingTree() {
 	}
 	
 	/**
-	 * Remove not valid options in array
+	 * Set all configurations of the options
 	 * @param {Object} optionsObj
 	 * @param {Array} filesPath
 	 */
-	function validate(options, file) {
-		if (!options) return true;
-		if (options.filter) {
-			return options.filter.test(file.path);
+	function configuration(options, file) {
+	    const config = {
+	        valid: true,
+	        folders: false,
+	        value: file.path
+	    }
+	    
+		if (!options) return config;
+		if (options.hasOwnProperty("filter")) {
+			config.valid = options.filter.test(file.name);
 		}
-		
-		return true;
+		if (options.hasOwnProperty("details")) {
+		    
+		    // I used conditional ternary operator to verify
+            options.details ? (config.value = file) : (config.value = file.path);
+		}
+		if (options.hasOwnProperty("folders")) {
+		    config.folders = options.folders;
+		}
+
+		return config;
 	}
 
 	/**
@@ -123,13 +154,6 @@ function walkingTree() {
 	
 		return [path, options, callback];
 	}
-
-	/**
-	 * Get method of callback, callback or simple return
-	 * @param {Function} callback [optional]
-	 * @param {Array} files
-	 */
-	const callbackMethod = (callback, files) => (callback ? callback.bind(null, files)() : files);
 
 	return {
 		get
