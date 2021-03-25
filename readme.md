@@ -49,7 +49,7 @@ walkingTree.get("./local/", (files) => {
 
 `filter` : `RegExp` - Filter the path name and file so that the array returns only the desired files according to your RegEx \
 `details` : `Boolean` - See the contents of the files in detail \
-`fokder` : `Boolean` - Take folders also on the return of the module
+`folders` : `Boolean` - Take folders also on the return of the module
 
 # Result
 
