@@ -60,7 +60,7 @@ The result of the execution returns an array with the path of all files, if you 
 
 # Node version
 
-The version most compatible with our package is node 6.17.1 or higher!
+The version most compatible with our package is Node 4 or higher!
 
 # Author
 

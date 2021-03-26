@@ -1,6 +1,6 @@
 {
   "name": "walking-tree",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Simple package to get the files path of a directory in an array",
   "main": "src/index.js",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "fs"
   ],
   "engines": {
-    "node": ">=6.17.1"
+    "node": ">=4.9.1"
   },
   "repository": {
     "type": "git",
