@@ -26,23 +26,15 @@ yarn add walking-tree
 
 # Usage
 
-The syntax for using the module is simple: `walkingTree.get(path)`\
-You can also use the options to improve its use using: `walkingTree.get(path, [options])`
+The syntax for using the module is simple: `walkingTree(path)`\
+You can also use the options to improve its use using: `walkingTree(path, [options])`
 
 You can use it with a simple variable:
 ```js
 const walkingTree = require("walking-tree");
-const files = walkingTree.get("./local/");
+const files = walkingTree("./local/");
 
 console.log(files);
-```
-Or also use with callback function:
-```js
-const walkingTree = require("walking-tree");
-
-walkingTree.get("./local/", (files) => {
-	console.log(files);
-})
 ```
 
 # Options
@@ -71,7 +63,6 @@ The result of the execution returns an array with the path of all files, if you 
 The version most compatible with our package is node 6.17.1 or higher!
 
 # Author
-
 
 | [<img src="https://avatars.githubusercontent.com/u/74318296?v=4&s=115"><br><sub>Marcos Dionisio</sub>](https://github.com/marcos-dionisio) |
 | :---: |
