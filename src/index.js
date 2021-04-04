@@ -52,6 +52,7 @@ function getFiles(fileWay) {
  */
 function pushFiles(file, filesTree, options) {
     let enableFolders = file.isDir;
+    let details = false;
     
     if (file.isDir) {
         const files = getFiles(file.path);
@@ -65,16 +66,13 @@ function pushFiles(file, filesTree, options) {
             if (!options.filter.test(file.name)) return;
         }
         if (options.hasOwnProperty("details")) {
-            if (!options.details) file = file.path;
-        } else {
-            file = file.path;
+            if (options.details) details = options.details;
         }
         if (options.hasOwnProperty("folders")) {
             if (options.folders) enableFolders = false;
         }
-    } else {
-        file = file.path;
     }
+    if (!details) file = file.path;
     if (!enableFolders) filesTree.push(file);
 }
 

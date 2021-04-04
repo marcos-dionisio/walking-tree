@@ -13,9 +13,9 @@
 </p>
 
 <h1 align="center">Walking Tree</h1>
-<p align="center">Simple package to get the files path of a directory in an array</p>
+<p align="center">Simples módulo para pegar toda árvore de arquivos de uma pasta</p>
 
-# Install
+# Instalar
 
 ```bash
 npm i walking-tree
@@ -24,12 +24,12 @@ npm i walking-tree
 yarn add walking-tree
 ```
 
-# Usage
+# Com usar
 
-The syntax for using the module is simple: `walkingTree(path)`\
-You can also use the options to improve its use using: `walkingTree(path, [options])`
+A sintaxe para usar o módulo é simples, use: `walkingTree(path)`\
+Também você pode usar com as opções personalizadas: `walkingTree(path, [options])`
 
-You can use it with a simple variable:
+Você pode usar com uma simples variável:
 ```js
 const walkingTree = require("walking-tree");
 const files = walkingTree("./local/");
@@ -37,15 +37,15 @@ const files = walkingTree("./local/");
 console.log(files);
 ```
 
-# Options
+# Opções
 
-`filter` : `RegExp` - Filter all files by name using Regex \
-`details` : `Boolean` - See the contents of the files in detail \
-`folders` : `Boolean` - Take folders also on the return of the module
+`filter` : `RegExp` - Filtre todos os arquivos pelo nome usando Regex \
+`details` : `Boolean` - Veja todos os arquivos de forma mais detalhada em um objeto \
+`folders` : `Boolean` - Retorna não somente os arquivos, mas também as pastas
 
-# Result
+# Resultado
 
-The result of the execution returns an array with the path of all files:
+O resultado da execução retorna um array com todos os caminhos dos arquivos:
 ```js
 [
   '.../local/notes.txt',
@@ -58,16 +58,16 @@ The result of the execution returns an array with the path of all files:
 ]
 ```
 
-# Node version
+# Versão do Node
 
-The version most compatible with our package is Node 4 or higher!
+A versão compatível com este módulo do Node é 4 ou maior!
 
-# Translation
+# Traducles
 
-[English](readme.md) \
-[Portuguese](pt-br.md)
+[Inglês](readme.md) \
+[Português](pt-br.md)
 
-# Author
+# Autor
 
 | [<img src="https://avatars.githubusercontent.com/u/74318296?v=4&s=115"><br><sub>Marcos Dionisio</sub>](https://github.com/marcos-dionisio) |
 | :---: |
