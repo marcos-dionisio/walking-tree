@@ -24,7 +24,7 @@ npm i walking-tree
 yarn add walking-tree
 ```
 
-# Com usar
+# Como usar
 
 A sintaxe para usar o módulo é simples, use: `walkingTree(path)`\
 Também você pode usar com as opções personalizadas: `walkingTree(path, [options])`
@@ -40,7 +40,7 @@ console.log(files);
 # Opções
 
 `filter` : `RegExp` - Filtre todos os arquivos pelo nome usando Regex \
-`details` : `Boolean` - Veja todos os arquivos de forma mais detalhada em um objeto \
+`details` : `Boolean` - Veja todos os arquivos de forma mais detalhada em um objeto dentro do array \
 `folders` : `Boolean` - Retorna não somente os arquivos, mas também as pastas
 
 # Resultado
@@ -60,9 +60,9 @@ O resultado da execução retorna um array com todos os caminhos dos arquivos:
 
 # Versão do Node
 
-A versão compatível com este módulo do Node é 4 ou maior!
+A versão compatível com este módulo do Node é a 4 ou uma maior!
 
-# Traducles
+# Traduções
 
 [Inglês](readme.md) \
 [Português](pt-br.md)
